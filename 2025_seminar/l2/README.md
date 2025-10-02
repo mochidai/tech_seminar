@@ -1,4 +1,2 @@
 # このファイルについて
-このファイルはStanfordのCS 253 Web Secuirtyのコードを保存するリポジトリです。
-# Youtube
-https://www.youtube.com/watch?v=zhnQFQ2qFtA
+このファイルはテクニカルセミナー第二回の資料置き場です
