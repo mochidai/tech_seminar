@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; child-src http://localhost:4001; script-src 'unsafe-inline';">
+    <title>Parent</title>
+</head>
+<body>
+    <h1>Parent: localhost:4000</h1>
+    <input name='val' />
+    <br />
+    <br />
+    <iframe src="http://localhost:4001/child.html"></iframe>
+    <script>
+        const input = document.querySelector('input')
+        const iframe = document.querySelector('iframe')
+        input.addEventListener('input', () => {
+            iframe.contentWindow.postMessage(input.value, 'http://localhost:4001') // postMessageAPI
+        })
+    </script>
+</body>
+
+</html>
