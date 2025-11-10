@@ -22,19 +22,29 @@ app.get('/', (req, res) => {
     const source = req.query.source // 行を追加して、Hiのあとに続けたい。3行下に ${source} 追記した
     if (username) {
         res.send(`
-        Hi ${source} ${username}. Your balance is $${BALANCES[username]}. 
-        <form method='POST' action='/transfer'>
-        Send amount:
-        <input name='amount' />
-        // ブログと連携するとして、リンクをたどってきた人を追跡したい
-// //        <input name='amount' />
-        To user:
-        <input name='to' />
-        <input type='submit' value='Send' />
+            <h1>Hi <span id='username'></span>.
+            Your balance is $${BALANCES[username]}.
+            </h1>
+            <form method='POST' action='/transfer'>
+            Send amount:
+            <input name='amount' />
+            To user:
+            <input name='to' />
+            <input type='submit' value='Send' />
+            </form>            
+        `)
+    } else{
+        res.send(`
+        <h1>
+        ${source} Hi ${source} reader!
+        Login to your bank account
+        </h1>
+        <form method='POST' action='/login'>
+            Username: <input name='username' />
+            Password: <input name='password' type='password' />
+            <input type='submit' value='Login' />
         </form>
         `)
-    } else {
-    createReadStream('index.html').pipe(res)
     }
 })
 
